@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Head from './Head';
+import Skills from './skills';
+import Projects from './Projects';
+import axios from 'axios';
+
 
 class App extends Component {
+  constructor(props){
+  super(props);
+  this.state = {
+    projects:{}
+  }
+
+  }
+
+  //end of the constructor() method
+
+  get(){
+    axios.get("https://portfolio-917bc.firebaseio.com/skills/.json")
+    .then((response)=>{
+
+    })
+  }
+
+  //end of the get() method
+
+  componentDidMount(){
+    this.get();
+  }
+
+  //end of the componentDidMount() method
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Head/>
+        <Skills/>
+        <Projects/>
       </div>
     );
   }
+
+  //end of the render() method
+
 }
 
 export default App;
